@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,18 +9,19 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="{{ STATIC_URL }}sortable_listview/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
 
     </head>
     <body>
 			<div class="container">
-				<h1>Sortable List View Example</h1>
+				<h1>Sortable List Example</h1>
 				<p>Below are a list of sample items, that are editable in <a
 					href="/admin">admin</a>. You can sort using the blue buttons at
 				the top - the template for this is provided by sortable_listview. And
 				a template for pagination is also provided. These use standard
 				bootstrap classes for convenience.</p>
-				{% include 'sortable_listview/sort_links.html' %}
+
+				{% include 'sort_links.html' %}
 				{% for object in object_list %}
 					<div class="panel panel-success">
 						<div class="panel-heading">{{ object.title }}</div>
@@ -26,7 +29,7 @@
 						<div class="panel-footer">Published on: {{ object.published_date }}</div>
 					</div>
 				{% endfor %}
-				{% include 'sortable_listview/pagination.html' %}
+				{% include 'pagination.html' %}
 			</div>
     </body>
 </html>

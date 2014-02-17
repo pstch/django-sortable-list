@@ -111,7 +111,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'simple_blog',
-    'sortable_listview',
 )
 
 # A sample logging configuration. The only tangible logging

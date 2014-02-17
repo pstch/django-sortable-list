@@ -1,4 +1,4 @@
-Ensure django-sortable-listview is on your path.
+Ensure django-sortable-list is on your path.
 
 Then run:
   $ python manage.py runserver

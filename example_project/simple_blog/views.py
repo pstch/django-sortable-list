@@ -1,7 +1,9 @@
-from sortable_listview import SortableListView
+from django.views.generic import ListView
+from sortable_list.mixins import SortableListMixin
+
 from .models import Article
 
-class ArticleListView(SortableListView):
+class ArticleListView(SortableListMixin, ListView):
     allowed_sort_fields = {'title': {'default_direction': '',
                                      'verbose_name': 'Title'},
                            'published_date': {'default_direction': '-',
