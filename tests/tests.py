@@ -47,6 +47,7 @@ class TestGetContextData(TestCase):
         view = TestSortableListView()
         view.get_sort_string = MagicMock()
         view.sort_link_list = ['hola', 'mundo']
+        view.object_list = []
         context = view.get_context_data(object_list=[])
         self.assertEqual(context['sort_link_list'], ['hola', 'mundo'])
 
@@ -54,6 +55,7 @@ class TestGetContextData(TestCase):
         view = TestSortableListView()
         view.get_sort_string = MagicMock(return_value='sort=sortme')
         view.sort_link_list = []
+        view.object_list = []
         context = view.get_context_data(object_list=[])
         self.assertEqual(context['current_sort_query'], 'sort=sortme')
 
@@ -61,6 +63,7 @@ class TestGetContextData(TestCase):
         view = TestSortableListView()
         view.get_sort_string = MagicMock()
         view.sort_link_list = []
+        view.object_list = []
         view.get_context_data(object_list=[])
         view.get_sort_string.assert_called_once_with()
 
