@@ -7,3 +7,6 @@ dist
 
 # Vim
 *.swp
+
+build/
+os
