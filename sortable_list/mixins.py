@@ -24,17 +24,17 @@ class SortableListMixin(MultipleObjectMixin):
     def get(self, request, *args, **kwargs):
         self.sort_order, self.sort_field = self.set_sort(request)
         self.sort_link_list = self.get_sort_link_list(request)
-        return super(SortableListView, self).get(request, *args, **kwargs)
+        return super(SortableListMixin, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        context = super(SortableListView,
+        context = super(SortableListMixin,
                         self).get_context_data(**kwargs)
         context['current_sort_query'] = self.get_sort_string()
         context['sort_link_list'] = self.sort_link_list
         return context
 
     def get_queryset(self):
-        qs = super(SortableListView, self).get_queryset()
+        qs = super(SortableListMixin, self).get_queryset()
         qs = qs.order_by(self.sort)
         return qs
 
