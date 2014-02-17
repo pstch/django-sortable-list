@@ -1,10 +1,11 @@
-django-sortable-listview
+django-sortable-list
 ========================
-An extension of django's ListView that provides sorting.
+An extension of django's MultipleObjectMixin that provides sorting.
+
+Based on [aptivate/django-sortable-listview](https://github.com/aptivate/django-sortable-listview) by Sarah Bird, forked to use a Mixin instead of a full ListView.
 
 Features:
 - Works with django's built in pagination.
-- Contains templates & css for pagination and sort buttons (or just use the context_data and build your own).
 - Adds an arrow to show the sort direction on the active sort.
 - Knows what the next sort is (i.e. if you're already sorted by title in one direction, clicking on the title button/link again will sort it in the other direction).
 - Lets you specify default sort for your list (defaults to -id) and for each of the sortable fields.
@@ -14,21 +15,18 @@ Install
 =======
 Using pip::
 
-    pip install django-sortable-listview
+    pip install -e git+https://github.com/pstch/django-sortable-list.git#egg=django-sortable-list
 
-If you want to use the provided temaplates and CSS add ``'sortable_listview'`` to your INSTALLED_APPS in your django settings.
-
-To see how to include the css and templates in your application, look at the example project. The css is just standard bootstrap.
-
+Then, just use sortable_list.mixins.SortableListMixin
 
 Example Project
 ===============
 ![Screenshot of example project](/example_project/screenshot.png)
 
-To run the example project. First make sure django and django-sortable-listview are on your python path. For example, from inside a virtualenv::
+To run the example project. First make sure django and django-sortable-list are on your python path. For example, from inside a virtualenv::
 
     pip install django
-    pip install django-sortable-listview
+    pip install django-sortable-list
 
 Then from your cloned folder::
 
