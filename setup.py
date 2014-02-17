@@ -8,16 +8,16 @@ LICENSE = open(os.path.join(os.path.dirname(__file__), 'LICENSE.txt')).read()
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-sortable-listview',
+    name='django-sortable-list',
     version='0.23',
-    packages=['sortable_listview'],
+    packages=['sortable_list'],
     include_package_data=True,
     license=LICENSE,
-    description='An extension of django\'s ListView that provides sorting',
+    description='A MultipleObjectMixin for Django that provides sorting',
     long_description=README,
-    url='https://github.com/aptivate/django-sortable-listview',
-    author='Sarah Bird',
-    author_email='sarah@aptivate.org',
+    url='https://github.com/pstch/django-sortable-list',
+    author='Sarah Bird (original), Hugo Geoffroy',
+    author_email='hugo@pstch.net',
     install_requires=['django>=1.4'],
     classifiers=[
         'Development Status :: 3 - Alpha',
