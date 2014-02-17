@@ -1,5 +1,4 @@
-from django.views.generic import ListView
-
+from django.views.generic.list import MultipleObjectMixin
 
 class SortableListMixin(MultipleObjectMixin):
     # Defaults, you probably want to specify these when you subclass
