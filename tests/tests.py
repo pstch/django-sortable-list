@@ -8,7 +8,7 @@ from sortable_list.mixins import SortableListMixin
 
 from .models import TestModel
 
-class TestSortableListView(ListView, SortableListMixin):
+class TestSortableListView(SortableListMixin, ListView):
     # Required configuration
     model = TestModel
 
