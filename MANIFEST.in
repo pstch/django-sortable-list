@@ -1,5 +1,5 @@
 include MANIFEST.in
 include *.md
 include *.txt
-recursive-include sortable_listview/templates *
-recursive-include sortable_listview/static *
+recursive-include sortable_list/templates *
+recursive-include sortable_list/static *
