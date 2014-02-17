@@ -1,1 +1,1 @@
-from .views import SortableListView
+from .mixins import SortableListMixin

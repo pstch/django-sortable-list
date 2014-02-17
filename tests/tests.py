@@ -1,11 +1,14 @@
 from mock import patch, MagicMock
+
 from django.test import TestCase
 from django.test.client import RequestFactory
-from sortable_listview.views import SortableListView
+
+from django.views.generic import ListView
+from sortable_list.mixins import SortableListMixin
+
 from .models import TestModel
 
-
-class TestSortableListView(SortableListView):
+class TestSortableListView(SortableListMixin, ListView):
     # Required configuration
     model = TestModel
 
@@ -239,7 +242,7 @@ class TestGetSortLinkList(TestCase):
         self.assertItemsEqual(sort_link_list, expected_list)
 
 
-class TestBaseicSortLink(TestCase):
+class TestBasicSortLink(TestCase):
 
     def test_if_sort_string_is_empty_just_returns_request_path(self):
         view = TestSortableListView()
