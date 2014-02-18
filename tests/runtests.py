@@ -5,7 +5,7 @@ from django.conf import settings
 
 if not settings.configured:
     settings.configure(
-        INSTALLED_APPS=['sortable_list', 'tests'],
+        INSTALLED_APPS=['django_sortable_list', 'tests'],
         DATABASES={'default': {'ENGINE': 'django.db.backends.sqlite3'}},
     )
 
