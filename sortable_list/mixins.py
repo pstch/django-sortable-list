@@ -1,6 +1,4 @@
-from django.views.generic.list import MultipleObjectMixin
-
-class SortableListMixin(MultipleObjectMixin):
+class SortableListMixin(object):
     # Defaults, you probably want to specify these when you subclass
     default_sort_field = 'id'
     allowed_sort_fields = {default_sort_field: {'default_direction': '-',
