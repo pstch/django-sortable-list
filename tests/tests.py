@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 
 from django.views.generic import ListView
-from sortable_list.mixins import SortableListMixin
+from django_sortable_list.mixins import SortableListMixin
 
 from .models import TestModel
 
