@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='django-sortable-list',
     version='0.23',
-    packages=['sortable_list'],
+    packages=['django_sortable_list'],
     include_package_data=True,
     license=LICENSE,
     description='A MultipleObjectMixin for Django that provides sorting',
