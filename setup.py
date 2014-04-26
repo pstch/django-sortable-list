@@ -22,7 +22,7 @@ setup(
     url='https://github.com/pstch/django-sortable-list',
     author='Sarah Bird (original), Hugo Geoffroy',
     author_email='hugo@pstch.net',
-    install_requires=['django>=1.4'],
+    install_requires=['django>=1.5'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',

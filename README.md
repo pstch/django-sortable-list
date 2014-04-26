@@ -4,6 +4,8 @@ An extension of django's MultipleObjectMixin that provides sorting.
 
 Based on [aptivate/django-sortable-listview](https://github.com/aptivate/django-sortable-listview) by Sarah Bird, forked to use a Mixin instead of a full ListView.
 
+Requires Django 1.5 or 1.6, and Python (2.6, 2.7, 3.3).
+
 Features:
 - Works with django's built in pagination.
 - Adds an arrow to show the sort direction on the active sort.
