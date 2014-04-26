@@ -242,7 +242,18 @@ class TestGetSortLinkList(TestCase):
                           'path': 'basic_sort_link',
                           'indicator': 'sort_indicator',
                           'title': 'Nam'}]
-        self.assertItemsEqual(sort_link_list, expected_list)
+
+        def _cmp_lists(*args):
+            args = list(args)
+            a = args.pop()
+            b = args[-1]
+            identity = len(a) == len(b) and \
+                       all(x in b for x in a)
+            if identity and len(args) > 1:
+                return _cmp_lists(*args)
+            return identity
+
+        self.assertTrue(_cmp_lists(sort_link_list, expected_list))
 
 
 class TestBasicSortLink(TestCase):
