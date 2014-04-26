@@ -1,4 +1,4 @@
-django-sortable-list [![Build Status](https://travis-ci.org/pstch/django-sortable-list.png?branch=master)](https://travis-ci.org/pstch/django-sortable-list)
+django-sortable-list [![Build Status](https://travis-ci.org/pstch/django-sortable-list.png?branch=master)](https://travis-ci.org/pstch/django-sortable-list) [![Coverage Status](https://coveralls.io/repos/pstch/django-sortable-list/badge.png?branch=master)](https://coveralls.io/r/pstch/django-sortable-list?branch=master)
 ========================
 An extension of django's MultipleObjectMixin that provides sorting.
 
