@@ -28,6 +28,7 @@ class SortableListMixin(object):
         context = super(SortableListMixin,
                         self).get_context_data(**kwargs)
         context['current_sort_field'] = self.sort_field
+        context['default_sort_field'] = self.default_sort_field
         context['current_sort_query'] = self.get_sort_string()
         context['sort_link_list'] = self.sort_link_list
         return context
