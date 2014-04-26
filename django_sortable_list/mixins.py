@@ -4,6 +4,7 @@ class SortableListMixin(object):
     allowed_sort_fields = {default_sort_field: {'default_direction': '-',
                                                 'verbose_name': 'ID'}}
     sort_parameter = 'sort'  # the get parameter e.g. ?page=1&sort=2
+    sort_field = None
     # End of Defaults
 
     @property
