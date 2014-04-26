@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import os
 from setuptools import setup
+
+import django_sortable_list
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 LICENSE = open(os.path.join(os.path.dirname(__file__), 'LICENSE.txt')).read()
@@ -9,7 +13,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-sortable-list',
-    version='0.23',
+    version=django_sortable_list.__version__,
     packages=['django_sortable_list'],
     include_package_data=True,
     license=LICENSE,
@@ -27,7 +31,9 @@ setup(
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
