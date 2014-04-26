@@ -2,13 +2,22 @@ language: python
 python:
   - "2.6"
   - "2.7"
+  - "3.3"
 env:
   - DJANGO=1.4
   - DJANGO=1.5
   - DJANGO=1.6
 install:
   - pip install Django==$DJANGO
-  - pip install -r requirements.txt
+  - pip install coveralls
+  - pip install pep8
+  - pip install pylint
+  - pip install -r tests/requirements.txt
   - pip install .
 script:
-  - python setup.py test
+  - coverage run --source=django_sortable_list setup.py test
+after_success:
+  - pylint --rcfile=.pylintrc django_sortable_list
+  - pep8 django_sortable_list
+  - coverage report -m
+  - coveralls
