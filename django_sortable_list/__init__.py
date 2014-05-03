@@ -6,7 +6,7 @@ Modules :
 
 """
 __title__ = 'django-sortable-list'
-__version__ = '0.3.1'
+__version__ = '0.4.0'
 __author__ = 'Sarah Bird (original), Hugo Geoffroy'
 __license__ = 'See LICENSE'
 __copyright__ = "Copyright 2013 Sarah Bird" \
