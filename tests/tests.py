@@ -46,10 +46,13 @@ class TestGetContextData(TestCase):
     def test_sets_sort_field_list_context(self):
         view = TestSortableListView()
         view.get_sort_string = MagicMock()
-        view.sort_field_list = ['hola', 'mundo']
+        view.sort_field_list = [{'field': 'holapapa',
+                                 'name': 'hola papa'},
+                                {'field': 'holamundo',
+                                 'name': 'hola mundo'}]
         view.object_list = []
         context = view.get_context_data(object_list=[])
-        self.assertEqual(context['sort_field_list'], ['hola', 'mundo'])
+        self.assertEqual(context['sort_field_list'], view.sort_field_list)
 
     def test_sets_current_sort_query_context(self):
         view = TestSortableListView()
@@ -233,7 +236,10 @@ class TestGetSortFieldList(TestCase):
                                     }
         view.get_sort_indicator = MagicMock(return_value='sort_indicator')
         sort_field_list = view.get_sort_field_list(RequestFactory())
-        expected_list = ['title', 'name']
+        expected_list = [{'field': 'title',
+                          'name': 'Tit'},
+                         {'field': 'name',
+                          'name': 'Nam'}]
 
         def _cmp_lists(*args):
             args = list(args)
