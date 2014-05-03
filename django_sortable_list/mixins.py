@@ -102,7 +102,7 @@ class SortableListMixin(object):
         return toggled_sort_order
 
     def get_sort_field_list(self, request):
-        return [{'field': field,
-                 'name': opts['verbose_name']}
-                for field, opts in self.allowed_sort_fields.items()
-            ]
+        return [
+            {field: opts['verbose_name']}
+            for field, opts in self.allowed_sort_fields.items()
+        ]
