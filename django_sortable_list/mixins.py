@@ -22,7 +22,7 @@ class SortableListMixin(object):
 
     def get(self, request, *args, **kwargs):
         self.sort_order, self.sort_field = self.set_sort(request)
-        self.sort_link_list = self.get_sort_link_list(request)
+        self.sort_field_list = self.get_sort_field_list(request)
         return super(SortableListMixin, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -31,7 +31,7 @@ class SortableListMixin(object):
         context['current_sort_field'] = self.sort_field
         context['default_sort_field'] = self.default_sort_field
         context['current_sort_query'] = self.get_sort_string()
-        context['sort_link_list'] = self.sort_link_list
+        context['sort_field_list'] = self.sort_field_list
         return context
 
     def get_queryset(self):
@@ -100,16 +100,8 @@ class SortableListMixin(object):
             toggled_sort_order = '-'
         return toggled_sort_order
 
-    def get_sort_link_list(self, request):
-        sort_links = []
-        for sort_field in self.allowed_sort_fields:
-            sort_link = {
-                'attrs': sort_field,
-                'path': self.get_basic_sort_link(request, sort_field),
-                'indicator': self.get_sort_indicator(sort_field),
-                'title': self.allowed_sort_fields[sort_field]['verbose_name']}
-            sort_links.append(sort_link)
-        return sort_links
+    def get_sort_field_list(self, request):
+        return self.allowed_sort_fields.keys()
 
     def get_basic_sort_link(self, request, field):
         """
