@@ -5,6 +5,7 @@ class SortableListMixin(object):
                                                 'verbose_name': 'ID'}}
     sort_parameter = 'sort'  # the get parameter e.g. ?page=1&sort=2
     sort_field = None
+    sort_field_list = None
     # End of Defaults
 
     @property
@@ -53,7 +54,7 @@ class SortableListMixin(object):
             sort_order = ''
             sort_field = sort_request
         # Invalid sort requests fail silently
-        if not sort_field in self.allowed_sort_fields:
+        if sort_field not in self.allowed_sort_fields:
             sort_order = self.default_sort_order
             sort_field = self.default_sort_field
         return (sort_order, sort_field)
@@ -102,15 +103,3 @@ class SortableListMixin(object):
 
     def get_sort_field_list(self, request):
         return self.allowed_sort_fields.keys()
-
-    def get_basic_sort_link(self, request, field):
-        """
-        This will obliterate any other query parameters in your url. This is
-        often useful. For example, if we're using pagination as well, when we
-        re-order we probably want to start back at page 1.
-        """
-        sort_string = self.get_next_sort_string(field)
-        if sort_string:
-            return request.path + '?' + sort_string
-        else:
-            return request.path

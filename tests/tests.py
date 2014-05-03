@@ -23,13 +23,13 @@ class TestGet(TestCase):
             view(request)
             set_sort.assert_called_once_with(request)
 
-    def test_calls_sort_link_list_with_request(self):
+    def test_calls_sort_field_list_with_request(self):
         view = TestSortableListView.as_view()
         request = RequestFactory().get('/')
-        with patch('tests.tests.TestSortableListView.get_sort_link_list') \
-                as get_sort_link_list:
+        with patch('tests.tests.TestSortableListView.get_sort_field_list') \
+                as get_sort_field_field:
             view(request)
-            get_sort_link_list.assert_called_once_with(request)
+            get_sort_field_field.assert_called_once_with(request)
 
     def test_sets_sort_order_and_sort_field(self):
         view = TestSortableListView()
@@ -43,18 +43,18 @@ class TestGet(TestCase):
 
 class TestGetContextData(TestCase):
 
-    def test_sets_sort_link_list_context(self):
+    def test_sets_sort_field_list_context(self):
         view = TestSortableListView()
         view.get_sort_string = MagicMock()
-        view.sort_link_list = ['hola', 'mundo']
+        view.sort_field_list = ['hola', 'mundo']
         view.object_list = []
         context = view.get_context_data(object_list=[])
-        self.assertEqual(context['sort_link_list'], ['hola', 'mundo'])
+        self.assertEqual(context['sort_field_list'], ['hola', 'mundo'])
 
     def test_sets_current_sort_query_context(self):
         view = TestSortableListView()
         view.get_sort_string = MagicMock(return_value='sort=sortme')
-        view.sort_link_list = []
+        view.sort_field_list = []
         view.object_list = []
         context = view.get_context_data(object_list=[])
         self.assertEqual(context['current_sort_query'], 'sort=sortme')
@@ -62,7 +62,7 @@ class TestGetContextData(TestCase):
     def test_calls_get_sort_string(self):
         view = TestSortableListView()
         view.get_sort_string = MagicMock()
-        view.sort_link_list = []
+        view.sort_field_list = []
         view.object_list = []
         view.get_context_data(object_list=[])
         view.get_sort_string.assert_called_once_with()
@@ -222,7 +222,7 @@ class TestToggleSortOrder(TestCase):
         self.assertEqual(toggled, '-')
 
 
-class TestGetSortLinkList(TestCase):
+class TestGetSortFieldList(TestCase):
 
     def test_all_fields_are_set_correctly_and_returned_as_list_of_dict(self):
         view = TestSortableListView()
@@ -231,17 +231,9 @@ class TestGetSortLinkList(TestCase):
                                     'name': {'default_direction': '',
                                              'verbose_name': 'Nam'}
                                     }
-        view.get_basic_sort_link = MagicMock(return_value='basic_sort_link')
         view.get_sort_indicator = MagicMock(return_value='sort_indicator')
-        sort_link_list = view.get_sort_link_list(RequestFactory())
-        expected_list = [{'attrs': 'title',
-                          'path': 'basic_sort_link',
-                          'indicator': 'sort_indicator',
-                          'title': 'Tit'},
-                         {'attrs': 'name',
-                          'path': 'basic_sort_link',
-                          'indicator': 'sort_indicator',
-                          'title': 'Nam'}]
+        sort_field_list = view.get_sort_field_list(RequestFactory())
+        expected_list = ['title', 'name']
 
         def _cmp_lists(*args):
             args = list(args)
@@ -253,21 +245,4 @@ class TestGetSortLinkList(TestCase):
                 return _cmp_lists(*args)
             return identity
 
-        self.assertTrue(_cmp_lists(sort_link_list, expected_list))
-
-
-class TestBasicSortLink(TestCase):
-
-    def test_if_sort_string_is_empty_just_returns_request_path(self):
-        view = TestSortableListView()
-        request = RequestFactory().get('/about/')
-        view.get_next_sort_string = MagicMock(return_value='')
-        returned_link = view.get_basic_sort_link(request, '')
-        self.assertEqual(returned_link, '/about/')
-
-    def test_if_sort_string_not_empty_appends_string_with_query_sep(self):
-        view = TestSortableListView()
-        request = RequestFactory().get('/')
-        view.get_next_sort_string = MagicMock(return_value='sort=-sf')
-        returned_link = view.get_basic_sort_link(request, '')
-        self.assertEqual(returned_link, '/?sort=-sf')
+        self.assertTrue(_cmp_lists(sort_field_list, expected_list))
