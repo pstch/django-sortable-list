@@ -37,6 +37,8 @@ Then from your cloned folder::
 
 You should be able to see the example project at localhost:8000. A database is provided with some sample content. The username and password is admin/admin
 
+**NOTE**: At the moment, the example project is not up to date with django-sortable-list and will not work
+
 Development and Tests
 =====================
 
