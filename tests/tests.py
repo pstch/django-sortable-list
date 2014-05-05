@@ -234,8 +234,10 @@ class TestGetSortFieldList(TestCase):
                                     }
         view.get_sort_indicator = MagicMock(return_value='sort_indicator')
         sort_field_list = view.get_sort_field_list(RequestFactory())
-        expected_list = [{'title': 'Tit'},
-                         {'name': 'Nam'}]
+        expected_list = {
+            'title': 'Tit',
+            'name': 'Nam'
+        }
 
         def _cmp_lists(*args):
             args = list(args)
